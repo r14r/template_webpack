@@ -1,0 +1,78 @@
+{
+  "name": "kratos-boilerplate",
+  "version": "3.1.0",
+  "title": "Kratos Boilerplate",
+  "description": "A simple boilerplate for creating a static PWA using Webpack, Pug, PostCSS and CSS Modules",
+  "homepage": "https://github.com/felipefialho/kratos-boilerplate",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "author": {
+    "name": "Felipe Fialho",
+    "email": "hi@felipefialho.com",
+    "url": "http://www.felipefialho.com"
+  },
+  "scripts": {
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "deploy": "gh-pages-deploy",
+    "analyzer": "npm run build && webpack-bundle-analyzer ./dist/stats.json",
+    "lint": "npm run lint:js && npm run lint:scss",
+    "lint:scss": "sass-lint -c sass-lint.json 'src/**/*.scss' -v -q",
+    "lint:js": "eslint ./src/",
+    "fix:js": "eslint ./src/ --fix"
+  },
+  "gh-pages-deploy": {
+    "staticpath": "dist",
+    "prep": [
+      "build"
+    ],
+    "noprompt": true
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "autoprefixer": "^10.2.6",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.4.1",
+    "css-loader": "^5.2.6",
+    "cssnano": "^5.0.2",
+    "eslint": "^7.27.0",
+    "file-loader": "6.2.0",
+    "gh-pages-deploy": "^0.5.1",
+    "html-webpack-plugin": "^4.5.2",
+    "husky": "^6.0.0",
+    "imagemin-webpack-plugin": "^2.4.2",
+    "lost": "^8.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "node-sass": "5.0.0",
+    "offline-plugin": "^5.0.7",
+    "postcss": "^8.3.0",
+    "postcss-font-magician": "^3.0.0",
+    "postcss-loader": "^4.3.0",
+    "postcss-modules": "^4.0.0",
+    "pug": "^3.0.2",
+    "pug-loader": "^2.4.0",
+    "rucksack-css": "^1.0.2",
+    "rupture-sass": "^0.3.0",
+    "sass-lint": "^1.13.1",
+    "sass-loader": "^10.1.1",
+    "style-loader": "^2.0.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.46.0",
+    "webpack-bundle-analyzer": "^4.4.2",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-pwa-manifest": "^4.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "dependencies": {}
+}
